@@ -51,7 +51,35 @@ set GROQ_API_KEY=your_api_key
 
 Replace `your_api_key` with your actual Groq API key.
 
-After setting the environment variable, you'll need to install the required dependencies listed in `requirements.txt`. You can do this with pip:
+Next, create a virtual environment:
+
+For Mac/Linux users, you can do this in the terminal:
+
+```
+python3 -m venv venv
+```
+
+For Windows users, you can do this in the command prompt:
+
+```
+py -m venv venv
+```
+
+Then, activate the virtual environment:
+
+For Mac/Linux users, you can do this in the terminal:
+
+```
+source venv/bin/activate
+```
+
+For Windows users, you can do this in the command prompt:
+
+```
+.\venv\Scripts\activate
+```
+
+After setting the environment variable and activating the virtual environment, you'll need to install the required dependencies listed in `requirements.txt`. You can do this with pip:
 
 ```
 pip install -r requirements.txt
