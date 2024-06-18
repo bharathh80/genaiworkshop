@@ -18,18 +18,10 @@ def load_docs(_directory):
     return _documents
 
 
-import os
-
 def split_docs(_documents, chunk_size=1000, chunk_overlap=20):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
     docs = text_splitter.split_documents(_documents)
-    metadata = []
-    for i, doc in enumerate(docs):
-        metadata.append({
-            'id': i,
-            'original_document': os.path.basename(doc['filepath'])
-        })
-    return docs, metadata
+    return docs
 
 
 def create_embeddings(_chunks):
@@ -51,18 +43,11 @@ def create_embeddings(_chunks):
     return embeddings
 
 
-import json
-
-def save_metadata(metadata, filepath):
-    with open(filepath, 'w') as f:
-        json.dump(metadata, f)
-
 if __name__ == "__main__":
     documents = load_docs(directory)
     print(f"Number of documents ingested: {len(documents)}")
-    chunks, metadata = split_docs(documents)
+    chunks = split_docs(documents)
     print(f"Number of chunks created: {len(chunks)}")
-    save_metadata(metadata, 'metadata.json')
     embedding = create_embeddings(chunks)
 
     try:
