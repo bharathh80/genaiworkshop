@@ -27,7 +27,7 @@ def split_docs(_documents, chunk_size=1000, chunk_overlap=20):
     for i, doc in enumerate(docs):
         metadata.append({
             'id': i,
-            'original_document': os.path.basename(doc.filepath)
+            'original_document': os.path.basename(doc['filepath'])
         })
     return docs, metadata
 
