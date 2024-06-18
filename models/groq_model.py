@@ -15,7 +15,9 @@ def get_response(question, system_prompt):
         messages=[
             {
                 "role": "system",
-                "content": system_prompt,
+                "content": system_prompt
+            },
+            {
                 "role": "user",
                 "content": question
             }
