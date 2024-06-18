@@ -129,3 +129,4 @@ target/
 
 # dotenv
 .env
+.aider*
