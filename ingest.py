@@ -6,6 +6,7 @@ from langchain.embeddings import HuggingFaceEmbeddings
 
 
 # Pick the right embedding model to create the vector data store
+# https://huggingface.co/spaces/mteb/leaderboard
 embeddings = SentenceTransformerEmbeddings(model_name='all-MiniLM-L12-v2')
 
 # Specify where the documents are located
