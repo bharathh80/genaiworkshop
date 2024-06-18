@@ -2,6 +2,7 @@ import streamlit as st
 from ingest import load_docs, split_docs, create_embeddings
 from search_index import perform_search
 from models import groq_model
+from prompt_template import get_prompt
 
 # Load and ingest documents
 documents = load_docs('./docs')
