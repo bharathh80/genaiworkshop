@@ -62,7 +62,7 @@ python3 -m venv venv
 For Windows users, you can do this in the command prompt:
 
 ```
-py -m venv venv
+python -m venv venv
 ```
 
 Then, activate the virtual environment:
