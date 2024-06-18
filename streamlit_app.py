@@ -11,7 +11,9 @@ embeddings = create_embeddings(chunks)
 # Create Streamlit UI
 st.title('Document Search')
 question = st.text_input('Enter your question:')
-if st.button('Search'):
+if st.button('Search') and question:
     rephrased_question = rephrase_question(question)
     results = perform_search(rephrased_question, embeddings)
     st.write(results)
+elif st.button('Search') and not question:
+    st.write("Please enter a question.")
