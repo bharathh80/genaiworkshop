@@ -1,7 +1,7 @@
 import streamlit as st
 from ingest import load_docs, split_docs, create_embeddings
 from search_index import perform_search
-from simple_prompt import rephrase_question
+from models import groq_model
 
 # Load and ingest documents
 documents = load_docs('./docs')
@@ -12,7 +12,7 @@ embeddings = create_embeddings(chunks)
 st.title('Document Search')
 question = st.text_input('Enter your question:')
 if st.button('Search') and question:
-    rephrased_question = rephrase_question(question)
+    rephrased_question = groq_model.get_response(question, system_prompt)
     results = perform_search(rephrased_question, embeddings)
     st.write(results)
 elif st.button('Search') and not question:
