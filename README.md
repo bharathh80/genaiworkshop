@@ -44,13 +44,12 @@ pip install -r requirements.txt
 Then, you can run each script with Python:
 
 ```
-python simple_prompt.py
-python prompt_template.py
-python search_index.py
-python ingest.py
+python 1_simple_prompt.py
+python 2_prompt_template.py
 ```
+...
 
-Please note that these scripts are designed to work together, and some may require the output of others to function correctly. For example, `ingest.py` must be run before `search_index.py` to create the FAISS index that the latter script loads.
+Please note that these scripts are designed to work together, and some may require the output of others to function correctly. For example, `3_ingest.py` must be run before `4_search_index.py` to create the FAISS index that the latter script loads.
 
 # Contributing
 
