@@ -17,13 +17,17 @@ embeddings = HuggingFaceEmbeddings(
     encode_kwargs=encode_kwargs # Pass the encoding options
 )
 
-try:
-   db = FAISS.load_local(folder_path="../database/faiss_db",embeddings=embeddings,index_name="myFaissIndex")
-   print("Faiss index loaded ")
-except Exception as e:
-   print("Fiass index loading failed \n",e)
+def perform_search(question):
+    try:
+        db = FAISS.load_local(folder_path="../database/faiss_db",embeddings=embeddings,index_name="myFaissIndex")
+        print("Faiss index loaded ")
+    except Exception as e:
+        print("Fiass index loading failed \n",e)
 
-while True:
-   question = input("Enter your query:")
-   searchDocs = db.similarity_search(question)
-   print(searchDocs[0].page_content)
+    searchDocs = db.similarity_search(question)
+    return searchDocs[0].page_content
+
+if __name__ == "__main__":
+    while True:
+        question = input("Enter your query:")
+        print(perform_search(question))
