@@ -1,6 +1,6 @@
 import models.groq_model as groq_model
-from 2_prompt_template import get_prompt
-from 3_search_index import perform_search
+from prompt_template import get_prompt
+from search_index import perform_search
 
 
 def get_user_question():
