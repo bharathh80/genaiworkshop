@@ -35,9 +35,23 @@ This script is used to demonstrate how to a simple classifier that will rephrase
 
 # Usage
 
+Before running the scripts, you need to set an environment variable `GROQ_API_KEY` to your Groq API key. 
 
+For Mac/Linux users, you can do this in the terminal:
 
-To use these scripts, you'll need to install the required dependencies listed in `requirements.txt`. You can do this with pip:
+```
+export GROQ_API_KEY=your_api_key
+```
+
+For Windows users, you can do this in the command prompt:
+
+```
+set GROQ_API_KEY=your_api_key
+```
+
+Replace `your_api_key` with your actual Groq API key.
+
+After setting the environment variable, you'll need to install the required dependencies listed in `requirements.txt`. You can do this with pip:
 
 ```
 pip install -r requirements.txt
