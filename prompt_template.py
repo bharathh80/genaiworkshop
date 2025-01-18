@@ -1,4 +1,5 @@
 from models import groq_model
+from models import groq_model_guardrails
 import json
 
 
@@ -13,5 +14,9 @@ def get_prompt(prompt_str):
 
 
 if __name__ == "__main__":
+    question = "How quickly can I get a return for my product?"
+   
+    print(groq_model_guardrails.get_safe_unsafe(question))
+     
     system_prompt = get_prompt("GROQ_SYSTEM_CUSTOMER_SUPPORT_PROMPT")
-    print(groq_model.get_response("How quickly can I get a return for my product?", system_prompt))
+    print(groq_model.get_response(question, system_prompt).content)

@@ -1,6 +1,6 @@
 from groq import Groq
 
-MODEL_NAME = "llama3-8b-8192"
+MODEL_NAME = "llama3-70b-8192"
 
 
 def get_client():
@@ -25,11 +25,15 @@ def get_response(question, system_prompt):
         temperature=1,
         max_tokens=1024,
         top_p=1,
-        stream=True,
+        stream=False,
+        response_format={"type": "json_object"},
         stop=None,
     )
-    out = []
-    for chunk in completion:
-        out.append(chunk.choices[0].delta.content or "")
 
-    return ''.join(out)
+
+    #out = []
+    #for chunk in completion:
+    #    out.append(chunk.choices[0].delta.content or "")
+    print(completion.choices[0].message)
+    return completion.choices[0].message
+    #return ''.join(out)

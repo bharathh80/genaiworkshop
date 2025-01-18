@@ -14,8 +14,8 @@ if __name__ == "__main__":
                 "content": "How quickly will I get a refund on a product I have returned?"
             }
         ],
-        temperature=1,
-        max_tokens=1024,
+        temperature=0,
+        max_tokens=256,
         top_p=1,
         stream=True,
         stop=None,
