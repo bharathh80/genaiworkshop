@@ -1,13 +1,8 @@
-from langchain.document_loaders import DirectoryLoader
+from langchain_community.document_loaders import DirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import SentenceTransformerEmbeddings
-from langchain.vectorstores import FAISS
-from langchain.embeddings import HuggingFaceEmbeddings
-
-
-# Pick the right embedding model to create the vector data store
-# https://huggingface.co/spaces/mteb/leaderboard
-embeddings = SentenceTransformerEmbeddings(model_name='all-MiniLM-L12-v2')
+from langchain_community.embeddings import SentenceTransformerEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 # Specify where the documents are located
 directory = './docs'
@@ -27,6 +22,9 @@ def split_docs(_documents, chunk_size=1000, chunk_overlap=20):
 
 def create_embeddings(_chunks):
     # Define the path to the pre-trained model you want to use
+    # Pick the right embedding model to create the vector data store
+    # https://huggingface.co/spaces/mteb/leaderboard
+
     modelPath = "sentence-transformers/all-MiniLM-l6-v2"
 
     # Create a dictionary with model configuration options, specifying to use the CPU for computations
@@ -58,7 +56,7 @@ if __name__ == "__main__":
         print("FAISS index created")
 
         # Loading the index for searching
-        db = FAISS.load_local(folder_path="../database/faiss_db", embeddings=embeddings, index_name="myFaissIndex")
+        db = FAISS.load_local(folder_path="../database/faiss_db", embeddings=embedding, index_name="myFaissIndex")
         searchDocs = db.similarity_search("What is the return policy for?")
         print(searchDocs[0].page_content)
     except Exception as e:
