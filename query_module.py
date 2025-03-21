@@ -1,6 +1,7 @@
 import models.groq_model as groq_model
 from prompt_template import get_prompt
 from search_index import perform_search
+from langchain_community.embeddings import HuggingFaceEmbeddings
 
 
 def get_user_question():
@@ -25,6 +26,7 @@ if __name__ == "__main__":
     question = get_user_question()
     rephrased_question = rephrase_question(question)
     print(f"Rephrased Question: {rephrased_question}")
+    
     answers = query_search_index(rephrased_question)
     response = generate_response(rephrased_question, answers)
     print(f"Response after index search:\n {response}")

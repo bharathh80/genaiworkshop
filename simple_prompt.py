@@ -7,11 +7,17 @@ if __name__ == "__main__":
         messages=[
             {
                 "role": "system",
-                "content": "Play the role of a customer service professional for a leading E-Commerce company called AcmeCorp and analyse a provided question or ticket from a customer. Be as professional and polite as possible when replying to the provided text. Use your best judgement of what a good response will be based on the refund policies of other leading ecommerce companies sucha as Amazon, Flipkart, Walmart"
+                "content": "Play the role of a customer service professional "
+                "for a leading E-Commerce company called AcmeCorp and analyse "
+                "a provided question or ticket from a customer. Be as professional "
+                "and polite as possible when replying to the provided text. "
+                "Use your best judgement of what a good response will be based "
+                "on the refund policies of other leading ecommerce companies "
+                "such as Amazon, Flipkart, Walmart"
             },
             {
                 "role": "user",
-                "content": "How quickly will I get a refund on a product I have returned?"
+                "content": "When will I get a refund on a product I have returned?"
             }
         ],
         temperature=0,

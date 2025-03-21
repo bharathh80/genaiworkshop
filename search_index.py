@@ -1,13 +1,15 @@
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 
 # Define the path to the pre-trained model you want to use
 modelPath = "sentence-transformers/all-MiniLM-l6-v2"
 
-# Create a dictionary with model configuration options, specifying to use the CPU for computations
+# Create a dictionary with model configuration options, 
+# specifying to use the CPU for computations
 model_kwargs = {'device':'cpu'}
 
-# Create a dictionary with encoding options, specifically setting 'normalize_embeddings' to False
+# Create a dictionary with encoding options, specifically setting 
+# 'normalize_embeddings' to False
 encode_kwargs = {'normalize_embeddings': False}
 
 # Initialize an instance of HuggingFaceEmbeddings with the specified parameters
@@ -20,7 +22,10 @@ embeddings = HuggingFaceEmbeddings(
 
 def perform_search(question):
     try:
-        db = FAISS.load_local(folder_path="../database/faiss_db",embeddings=embeddings,index_name="myFaissIndex")
+        db = FAISS.load_local(
+            folder_path="../database/faiss_db",
+            embeddings=embeddings,
+            index_name="myFaissIndex")
         print("FAISS index loaded ")
     except Exception as e:
         print("FAISS index loading failed \n",e)

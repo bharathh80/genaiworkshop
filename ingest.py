@@ -3,6 +3,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from pydantic import BaseModel
 
 # Specify where the documents are located
 directory = './docs'
@@ -21,23 +22,14 @@ def split_docs(_documents, chunk_size=1000, chunk_overlap=20):
 
 
 def create_embeddings(_chunks):
-    # Define the path to the pre-trained model you want to use
-    # Pick the right embedding model to create the vector data store
-    # https://huggingface.co/spaces/mteb/leaderboard
-
     modelPath = "sentence-transformers/all-MiniLM-l6-v2"
+    model_kwargs = {"device": "cpu"}
+    encode_kwargs = {"normalize_embeddings": False}
 
-    # Create a dictionary with model configuration options, specifying to use the CPU for computations
-    model_kwargs = {'device': 'cpu'}
-
-    # Create a dictionary with encoding options, specifically setting 'normalize_embeddings' to False
-    encode_kwargs = {'normalize_embeddings': False}
-
-    # Initialize an instance of HuggingFaceEmbeddings with the specified parameters
     embeddings = HuggingFaceEmbeddings(
-        model_name=modelPath,  # Provide the pre-trained model's path
-        model_kwargs=model_kwargs,  # Pass the model configuration options
-        encode_kwargs=encode_kwargs  # Pass the encoding options
+        model_name=modelPath,
+        model_kwargs=model_kwargs,
+        encode_kwargs=encode_kwargs,
     )
     return embeddings
 
